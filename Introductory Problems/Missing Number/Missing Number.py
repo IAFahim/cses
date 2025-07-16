@@ -18,18 +18,21 @@
 # 4
 # 
 #%%
-n = int(input())
-arr: list[int] = list(map(int, input().split(" ")))
+def inputs() -> tuple[int, list[int]]:
+    n: int = int(input())
+    arr: list[int] = list(map(int, input().split(" ")))
+    return n, arr
 #%%
-arr.sort()
-for i in range(len(arr)-1):
-    if arr[i]+1 != arr[i+1]:
-        print(arr[i]+1)
-        break
-else:
-    if arr[0]!=1:
-        print(1)
+def outputs(n: int, arr: list[int]) -> int:
+    arr.sort()
+    for i in range(len(arr) - 1):
+        if arr[i] + 1 != arr[i + 1]:
+            return arr[i] + 1
+    if arr[0] != 1:
+        return 1
     else:
-        print(n)
+        return n
 #%%
-arr
+n, arr = inputs()
+k = outputs(n, arr)
+print(k)
